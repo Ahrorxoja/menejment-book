@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:menejment/pages/HomePageMain.dart';
 import 'package:get/get.dart';
+import 'package:menejment/pages/splashscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Dublyor tadbirkor',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
       ),
-      home: HomePageMain(),
+      home: SplashScreen(),
     );
   }
 }

@@ -2,7 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:menejment/colors/colors.dart';
+import 'package:menejment/pages/adabiyotlar.dart';
+import 'package:menejment/pages/atamalar.dart';
+import 'package:menejment/pages/biznes_reja/brmain.dart';
+import 'package:menejment/pages/drower/malumot.dart';
+import 'package:menejment/pages/drower/muallif.dart';
 import 'package:menejment/pages/mavzular/mavzular_page.dart';
+import 'package:menejment/pages/qonunlar/qonunlar_main.dart';
+import 'package:menejment/pages/taqdimot/taqdimotmain.dart';
+import 'package:menejment/pages/test.dart';
+import 'package:menejment/pages/youtube.dart';
+
+import 'amaliy/amaliy_main.dart';
 
 class HomePageMain extends StatefulWidget {
   const HomePageMain({Key? key}) : super(key: key);
@@ -24,7 +35,7 @@ class _HomePageMainState extends State<HomePageMain> {
                 backgroundColor: kPrimaryColor,
                 // title: const Text('40 Farz'),
                 flexibleSpace: FlexibleSpaceBar(
-                    title: Text("Menejment"),
+                    title: Text("Dublyor tadbirkor"),
                     background: ClipRRect(
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(20),
@@ -62,7 +73,7 @@ class _HomePageMainState extends State<HomePageMain> {
                             name: "Mavzular",
                             photo: "assets/book.json"),
                         buttonLesson(
-                          link: () => Get.to(MavzularPage()),
+                          link: () => Get.to(TaqdimotMain()),
                           name: "Taqdimotlar",
                           photo: "assets/taqdimot.json",
                         ),
@@ -75,12 +86,12 @@ class _HomePageMainState extends State<HomePageMain> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         buttonLesson(
-                          link: () => Get.to(MavzularPage()),
+                          link: () => Get.to(Atamalar()),
                           name: "Atamalar",
                           photo: "assets/atamalar.json",
                         ),
                         buttonLesson(
-                          link: () => Get.to(MavzularPage()),
+                          link: () => Get.to(YoutubeVideo()),
                           name: "Videolar",
                           photo: "assets/video.json",
                         ),
@@ -93,14 +104,14 @@ class _HomePageMainState extends State<HomePageMain> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         buttonLesson(
-                          link: () => Get.to(MavzularPage()),
-                          name: "Amaliy",
-                          photo: "assets/amaliy.json",
+                          link: () => Get.to(Brmain()),
+                          name: "Bines reja",
+                          photo: "assets/br.json",
                         ),
                         buttonLesson(
-                          link: () => Get.to(MavzularPage()),
-                          name: "Labaratoriya",
-                          photo: "assets/labaratoriya.json",
+                          link: () => Get.to(QonunlarMain()),
+                          name: "Qonunlar",
+                          photo: "assets/qonun.json",
                         ),
                       ],
                     ),
@@ -111,15 +122,29 @@ class _HomePageMainState extends State<HomePageMain> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         buttonLesson(
-                          link: () => Get.to(MavzularPage()),
+                          link: () => Get.to(Adabiyotlar()),
                           name: "Adabiyot",
                           photo: "assets/adabiyotlar.json",
                         ),
                         buttonLesson(
-                          link: () => Get.to(MavzularPage()),
+                          link: () => Get.to(Test()),
                           name: "Testlar",
                           photo: "assets/testlar.json",
                         ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        buttonLesson(
+                          link: () => Get.to(AmaliyMain()),
+                          name: "Amaliy",
+                          photo: "assets/amaliy.json",
+                        ),
+                        Container(width: 140,)
                       ],
                     ),
                   ],
@@ -131,7 +156,7 @@ class _HomePageMainState extends State<HomePageMain> {
       ),
       drawer: Drawer(
         child: Container(
-          color: kPrimaryColor,
+          color: mainColor,
           child: ListView(padding: EdgeInsets.all(0.0), children: <Widget>[
             Container(
               height: 200,
@@ -163,14 +188,22 @@ class _HomePageMainState extends State<HomePageMain> {
             ),
             Padding(padding: EdgeInsets.only(top: 20)),
             simple(
-              title: "Uy",
+              title: "Bosh sahifa",
               icon: Lottie.asset("assets/homeicon.json", height: 75, width: 75),
             ),
             // Padding(padding: EdgeInsets.only(top: 20),),
-            Divider(color: Colors.white, height: 2),
-            Divider(
-              color: Colors.white,
-              height: 2,
+            Divider(color: Colors.white, height: 10),
+            // Divider(
+            //   color: Colors.white,
+            //   height: 2,
+            // ),
+            simpleLink(
+              title: "Dastur haqida",link: () => Get.to(Malimotlar()),icon:  Lottie.asset("assets/h.json",
+                height: 75, width: 75),
+            ),
+            simpleLink(
+              title: "Muallif",link: () => Get.to(Muallif()),icon:  Lottie.asset("assets/muallif.json",
+                height: 75, width: 75),
             ),
           ]),
         ),
@@ -181,6 +214,7 @@ class _HomePageMainState extends State<HomePageMain> {
   Widget simple({
     title,
     icon,
+
   }) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -199,6 +233,30 @@ class _HomePageMainState extends State<HomePageMain> {
           onTap: () {
             Navigator.of(context).pop();
           },
+        ),
+      ),
+    );
+  }
+  Widget simpleLink({
+    title,
+    icon,
+    link,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          // border: Border.all(color: Colors.red, width: 2.0),
+            borderRadius: BorderRadius.circular(10),
+            color: kPrimaryColor),
+        child: ListTile(
+          tileColor: Colors.white,
+          title: Text(
+            title,
+            style: TextStyle(color: Colors.white),
+          ),
+          leading: icon,
+          onTap: link,
         ),
       ),
     );

@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:menejment/colors/colors.dart';
+import 'package:menejment/pages/biznes%20reja/ass.dart';
+import 'package:menejment/pages/biznes%20reja/br2.dart';
+import 'package:menejment/pages/biznes%20reja/myapp.dart';
+import 'package:menejment/pages/biznes%20reja/syncviewer.dart';
 import 'package:menejment/pages/mavzular/kichik%20biznes/kb_dars1.dart';
 import 'package:menejment/pages/mavzular/kichik%20biznes/kb_dars2.dart';
 import 'package:menejment/pages/mavzular/kichik%20biznes/kb_dars3.dart';
@@ -70,6 +74,14 @@ class _KichikBiznesState extends State<KichikBiznes> {
                   KBdars5(),
                 ),
               ),
+              // SizedBox(height: 10,),
+              // _link(
+              //   color: mainColor,
+              //   text: "КИЧИК БИЗНЕСНИ ЙЎЛГА ҚЎЙИШДАГИ АСОСИЙ БОСҚИЧЛАР",
+              //   url: () => Get.to(
+              //     MyApp2(),
+              //   ),
+              // ),
             ],
           ),
         ),

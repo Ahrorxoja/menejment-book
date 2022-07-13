@@ -1,23 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:menejment/colors/colors.dart';
-import 'package:menejment/darslar.dart';
 
 class Mundarija extends StatefulWidget {
   const Mundarija({Key? key}) : super(key: key);
 
   @override
-  _MundarijaState createState() => _MundarijaState();
+  State<Mundarija> createState() => _MundarijaState();
 }
 
 class _MundarijaState extends State<Mundarija> {
+  String data = '';
+  fetchFileData() async {
+    String responseText;
+    responseText = await rootBundle.loadString('textfiles/kirish.txt');
+    setState(() {
+      data = responseText;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchFileData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         title: Text(
-          "МУНДАРИЖА",
-        ),
+            "МУНДАРИЖА"),
       ),
       body: Container(
         child: ListView(
@@ -26,19 +41,21 @@ class _MundarijaState extends State<Mundarija> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "МУНДАРИЖА",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "${Darslar.mundarija}",textAlign: TextAlign.justify,
-                    style: TextStyle(height: 1.5,),
+                  child: Column(
+                    children: [
+                      Text(
+                        "МУНДАРИЖА",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      ),
+                      Text(
+                        "$data",style: TextStyle(height: 1.2),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ],
                   ),
                 ),
               ],
